@@ -1,76 +1,86 @@
-<!-- <img src="https://storage.cloud.google.com/{{ bucket }}/{{ products.image }}" onerror="this.src='https://storage.cloud.google.com/{{bucket}}/placeholder.png'">
-{{ products.name }} -->
 {% extends "base.html" %}
 {% block content %}
-<div class="container">
-    <div class="columns is-centered">
-        <div class="column">
-            <h2 class="title has-text-centered">VND Classifier</h2>
-            <!-- Camera view -->
-            <!-- <div class="content is-flex is-horizontal-center">
-                <video id="video" width="400" height="300"></video>
+
+  <div class='main-content'>
+    <h1>Find Your Store</h1>
+    <h3>Find store's menu. Order online.</h3>
+  </div>
+
+  <div class="upload-gallery">
+    <div class="present-customer-image">
+      <h4 class="title is-spaced" id="storename">{{name}}</h4>
+      <h3 class="title is-spaced is-red" id="belike">average price: {{averageprice}}</h3>
+      <!-- <input id="storename"> -->
+      <img id="customer-image" src="{{image_menu}}">
+      <!-- <p class="subtitle is-6 spaced-top" id="desciption"></p> -->
+    </div>
+      <img id="store-menu" width="35%" heigh="80%" src="https://storage.cloud.google.com/fansipan-website-290191/{{image}}">
+  </div>
+
+  <section class="section is-white">
+    <div class="container news-container">
+        <h1 class="title">What's new</h1><br>
+      </div>
+      <div class="container">
+        <div class="tile is-ancester">
+          {% for column in [0,1,2] %}
+          <div class="tile is-parent is-4 is-vertical">
+            <div class="tile is-child"> 
+              {% for product in products[column::3] %}
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-square is-small">
+                    <img src="https://storage.cloud.google.com/fansipan-website-290191/{{product.image}}" onerror="this.src='https://storage.cloud.google.com/{{bucket}}/placeholder.png'">
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <h3 class="title is-spaced">{{ product.name }}</h3>
+                  <h3 class="subtitle">{{ product.price }}$</h3>
+
+                </div>
+                <div class="card-footer">
+                  <a class="card-footer-item" href="/checkout?id={{product.id}}">Purchase</a>
+                </div>
+              </div>
+              <br>
+              {% endfor %}
             </div>
-            <a href="#" id="capture" class="button is-flex is-link is-rounded">Take photo</a>
-            <br>
-            <div class="content is-flex is-horizontal-center">
-                <canvas id="canvas" width="400" height="250"></canvas>
-                <img id="photo" src="https://via.placeholder.com/400x250/jpg" alt="Photo">
-            </div>
-            <div class="content is-flex is-horizontal-center is-paddingless"> -->
-            <input type="file" class="filepond is-fullwidth" name="image" id="image">
-            <!-- </div> -->
-
+          </div>
+          {% endfor %}
         </div>
+      </div>
+  </section>
 
-        <div class="column">
-            <br><br><br>
-            <h4 id="prediction" class="title">Prediction:</h4>
-            <table id="output" class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
-                <tr>
-                    <th class="col-md-1">Classes</th>
-                    <th class="col-md-2">Probability</th>
-                </tr>
-                <tr>
-                    <th>1K</th>
-                    <td></td>
-                </tr>
-                <tr>
-                    <th>10K</th>
-                    <td></td>
-                </tr>
-                <tr>
-                    <th>100K</th>
-                    <td></td>
-                </tr>
-                <tr>
-                    <th>2K</th>
-                    <td></td>
-                </tr>
-                <tr>
-                    <th>20K</th>
-                    <td></td>
-                </tr>
-                <tr>
-                    <th>200K</th>
-                    <td></td>
-                </tr>
-                <tr>
-                    <th>5K</th>
-                    <td></td>
-                </tr>
-                <tr>
-                    <th>50K</th>
-                    <td></td>
-                </tr>
-                <tr>
-                    <th>500K</th>
-                    <td></td>
-                </tr>
-            </table>
-        </div>
 
+  <!-- <section class="section-main">
+    <h1>Breaking News</h1>
+
+    <div class="news-cards">
+      <div class="card-columns" id="news-list">
+        
+      </div>
+    </div>
+  </section> -->
+
+
+  <div class='my-footer'>
+    <div class='col bottom-logo'>
+        <img src="https://media.giphy.com/media/lcjDOcw21MzGGZImiR/giphy.gif">
+    </div>
+    <div class='col'>
+        <h2>COMPANY</h2>
+        <a href='#'>About</a>
+        <a href='#'>Jobs</a>
+    </div>
+    <div class='col'>
+        <h2>COMMUNITY</h2>
+        <a href='#'>New Stores</a>
+        <a href='#'>Developers</a>
+    </div>
+    <div class='col'>
+        <h2>USEFUL LINKS</h2>
+        <a href='#'>Help</a>
+        <a href='#'>Music</a>
     </div>
 </div>
-
-{{file}}
 {% endblock %}

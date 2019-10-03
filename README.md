@@ -77,7 +77,7 @@ gcloud app deploy
 Open a terminal and switch to directory `functions/classifier`:
 
 ```
-gcloud functions deploy classifier1 \
+gcloud functions deploy classifier2 \
     --runtime python37 \
     --trigger-http \
     --set-env-vars GCS_BUCKET=fansipan-website-290191 \

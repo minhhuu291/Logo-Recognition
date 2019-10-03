@@ -16,6 +16,7 @@ app.register_blueprint(upload_api)
 app.register_blueprint(home_page)
 app.register_blueprint(checkout_page)
 app.register_blueprint(charge_page)
+app.register_blueprint(uploader_page)
 
 if __name__ == '__main__':
     app.run(debug=True)

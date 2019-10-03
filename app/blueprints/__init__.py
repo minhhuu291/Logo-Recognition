@@ -4,3 +4,4 @@ from .sell import sell_page
 from .upload import upload_api
 from .checkout import checkout_page
 from .charge import charge_page
+from .uploader import uploader_page

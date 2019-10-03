@@ -1,20 +1,20 @@
-const renderMenu = (newmenu, idx) => {
-  const { 
-    image,
-    name,
-    price
-  } = newmenu
+// const renderMenu = (newmenu, idx) => {
+//   const { 
+//     image,
+//     name,
+//     price
+//   } = newmenu
 
-  return  `
-          <div class="card card-news">
-            <img src="https://storage.cloud.google.com/fansipan-website-290191/${image}" class="card-img-top" alt="${title}">
-            <div class="card-body">
-              <h5 class="card-title"><a href="${url}">${name}</a></h5>
-              <p class="card-text">${price}</p>
-            </div>
-          </div>
-          `
-}
+//   return  `
+//           <div class="card card-news">
+//             <img src="https://storage.cloud.google.com/fansipan-website-290191/${image}" class="card-img-top" alt="${title}">
+//             <div class="card-body">
+//               <h5 class="card-title"><a href="${url}">${name}</a></h5>
+//               <p class="card-text">${price}</p>
+//             </div>
+//           </div>
+//           `
+// }
 //   return  `
 // //           <section class="section is-white">
 // //               <div class="container news-container">
@@ -47,10 +47,10 @@ const renderMenu = (newmenu, idx) => {
 // //             `
 // }
 
-const getNews = (menu) => {
-  const data = menu
-  document.getElementById('news-list').innerHTML = data.map(renderMenu).join(''); 
-}
+// const getNews = (menu) => {
+//   const data = menu
+//   document.getElementById('news-list').innerHTML = data.map(renderMenu).join(''); 
+// }
 
 FilePond.setOptions({
     instantUpload: true,
@@ -58,7 +58,7 @@ FilePond.setOptions({
     allowReplace: false,
     allowImagePreview: true,
     server: {
-      process: 'https://us-central1-fansipan-website-290191.cloudfunctions.net/classifier1',
+      process: 'https://us-central1-fansipan-website-290191.cloudfunctions.net/classifier2',
       fetch: null,
       revert: null,
       restore: null,

@@ -6,13 +6,13 @@
     <h3>Find store's menu. Order online.</h3>
   </div>
   <div class="new-body">
-    <form method = "POST" enctype="multipart/form-data" class="is-large">  
+    <form action="{{url_for('uploader_page.upload_file')}}" method = "POST" enctype="multipart/form-data" class="is-large">  
       <input type="file" name="image" id="image", accept="image/png, image/jpeg" class="filepond is-fullwidth"/>  
-      <!-- <input type = "submit" value="Upload"/>  -->
-      <script
+      <input type = "submit" value="Upload"/> 
+      <!-- <script
           src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
       <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
-      <script src="static/js/hangdleRequest.js"></script>
+      <script src="static/js/hangdleRequest.js"></script> -->
     </form>   
     <!-- <div class="wrap">
       <div class="search">
@@ -70,7 +70,7 @@
   </section>
 
 
-  <section class="section-main">
+  <!-- <section class="section-main">
     <h1>Breaking News</h1>
 
     <div class="news-cards">
@@ -78,7 +78,7 @@
         
       </div>
     </div>
-  </section>
+  </section> -->
 
 
   <div class='my-footer'>
