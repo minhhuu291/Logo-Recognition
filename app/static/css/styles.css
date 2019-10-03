@@ -1,0 +1,289 @@
+body {
+  /* The image used */
+  background-image: url("https://wallpaperstream.com/wallpapers/full/beach/Awesome-Beach-Wallpaper.jpg");
+
+  /* Set a specific height */
+  min-height: 500px; 
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+nav {
+  height: 10vh;
+  width: 100%;
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+.nav-customize {
+  background-color: rgba(255,255,225,0.05);
+  width: 100%;
+  padding: 0;
+  display: flex;
+  font-size: 3vh; 
+}
+
+.main-content{
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 70vh;
+}
+
+.main-content h1{
+  font-size: 15vh;
+  color: white;
+}
+
+.main-content h3{
+  font-size: 5vh;
+  color: white;
+  padding-bottom: 3vh;
+}
+
+.new-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.new-header container {
+  width: 30%;
+  height: 30%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.new-header h1 {
+  font-size: 250%;
+  font-weight: bolder;
+}
+
+.new-header h2 {
+  font-size: 150%;
+}
+
+.new-body {
+  display: flex;
+  flex-direction: column;
+  padding: 3rem 1.5rem;
+  padding-top: 3rem;
+  padding-right: 1.5rem;
+  padding-bottom: 6rem;
+  padding-left: 1.5rem;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  width: 100%;
+  height: 40vh;
+}
+
+.upload-gallery {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  background-color: white;
+  padding-top: 2vh;
+  padding-bottom: 2vh;
+}
+
+.search {
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+
+.searchTerm {
+  width: 100%;
+  border: 3px solid #00B4CC;
+  border-right: none;
+  padding: 5px;
+  height: 5vh;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #9DBFAF;
+}
+
+.searchTerm:focus{
+  color: #00B4CC;
+}
+
+.searchButton {
+  width: 5vh;
+  height: 5vh;
+  border: 1px solid #00B4CC;
+  background: #00B4CC;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/*Resize the wrap to see the search bar change!*/
+.wrap{
+  width: 30%;
+  top: 50%;
+  left: 50%;
+}
+
+.upload-image {
+  width: 30%;
+  height: 40vh;
+  border: 5px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding-bottom: 1vh;
+}
+
+.news-container {
+  display: flex;
+  justify-content: center;
+  font-weight: 200;
+  padding-bottom: 6vh;
+  padding-top: 8vh;
+}
+
+.avatar-pic {
+  width: 30%;
+  }
+
+.upload-button {
+  color: green;
+}
+
+.is-boxed {
+  display: flex;
+  justify-content: center;
+  width: 30%;
+  height: 40%;  
+}
+
+.file-cta {
+  width: 100%;
+}
+
+.file-label {
+  width: 100%;
+  height: 20vh;
+  display: flex;
+  align-items: center;
+}
+
+.file-choosen {
+  width: 100%;
+}
+
+.present-customer-image {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-left: 3vw;
+  width: 25%;
+  height: 40%;
+  align-items: center;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', 'Arial', 'sans-serif';
+}
+
+.my-footer{
+  display: flex;
+  height: 30vh;
+  background-color: rgba(100,100,100,0.8);
+  align-items: center;
+}
+
+.my-footer img {
+  height: 100%;
+}
+
+.col{
+  display: flex;
+  width: 25%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding-left: 50px;
+  align-items: center;
+  color: #f8f9fa;
+}
+
+.col a {
+  color: white;
+  font-size: 2.5vh;
+}
+
+.col h2 {
+  color: white;
+  font-size: 3vh;
+}
+
+.social{
+  display: flex;
+  flex-direction: row;
+  width: 25%;
+  justify-content: space-evenly;  
+}
+
+.social i{
+  display: flex;
+  font-size: 200%;   
+  color: white; 
+}
+
+.bottom-logo{
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  width: 18%;
+}
+
+.bottom-logo i{
+  color: white;
+  font-size: 8vh;
+}
+
+.bottom-logo h5{
+  color: white;
+  font-size: 5vh;
+  align-self: flex-start;
+}
+
+.col > a:hover {
+  color: red;
+}
+
+.is-white {
+  background-color: #f8f9fa;
+}
+
+.is-large {
+  width: 50%;
+}
+
+.spaced-top {
+  padding-top: 1vh;
+}
+
+.is-small {
+  height: 40vh;
+}
+
+.is-6 {
+  font-size: 5vh;
+}
+
+.is-red {
+  color: red;
+}
+

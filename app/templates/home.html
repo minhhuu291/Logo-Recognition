@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% block content %}
+
+  <div class='main-content'>
+    <h1>Find Your Store</h1>
+    <h3>Find store's menu. Order online.</h3>
+  </div>
+  <div class="new-body">
+    <form method = "POST" enctype="multipart/form-data" class="is-large">  
+      <input type="file" name="image" id="image", accept="image/png, image/jpeg" class="filepond is-fullwidth"/>  
+      <!-- <input type = "submit" value="Upload"/>  -->
+      <script
+          src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
+      <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
+      <script src="static/js/hangdleRequest.js"></script>
+    </form>   
+    <!-- <div class="wrap">
+      <div class="search">
+        <input type="text" class="searchTerm" placeholder="Search store">
+        <button type="submit" class="searchButton">
+          <i class="fa fa-search"></i>
+        </button>
+      </div>
+    </div> -->
+  </div>
+
+  <div class="upload-gallery">
+    <div class="present-customer-image">
+      <h4 class="title is-spaced" id="storename">Look for Menu</h4>
+      <h3 class="title is-spaced is-red" id="belike">BE LIKE</h3>
+      <!-- <input id="storename"> -->
+      <img id="customer-image" src="https://colorlib.com/preview/theme/travelers/images/img_1.jpg">
+      <!-- <p class="subtitle is-6 spaced-top" id="desciption"></p> -->
+    </div>
+      <img id="store-menu" width="35%" heigh="80%" src="https://images.squarespace-cdn.com/content/v1/5bf5c4a17e3c3a7cf4ed645a/1561670393341-26BPRXMXTWFW8541ODLS/ke17ZwdGBToddI8pDm48kAcJn0w-wU5dHBD60E0UZTV7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QHyNOqBUUEtDDsRWrJLTmEavKLH_ZiDOy8D8MfZnX23QZJwCzR7IYgvsN_lJZxdc352eQAZNMyVB2nTgCZ2cR/COBrunch.png?format=1500w">
+  </div>
+
+  <section class="section is-white">
+    <div class="container news-container">
+        <h1 class="title">What's new</h1><br>
+      </div>
+      <div class="container">
+        <div class="tile is-ancester">
+          {% for column in [0,1,2] %}
+          <div class="tile is-parent is-4 is-vertical">
+            <div class="tile is-child"> 
+              {% for product in products[column::3] %}
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-square is-small">
+                    <img src="https://storage.cloud.google.com/fansipan-website-290191/{{product.image}}" onerror="this.src='https://storage.cloud.google.com/{{bucket}}/placeholder.png'">
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <h3 class="title is-spaced">{{ product.name }}</h3>
+                  <h3 class="subtitle">{{ product.price }}$</h3>
+
+                </div>
+                <div class="card-footer">
+                  <a class="card-footer-item" href="/checkout?id={{product.id}}">Purchase</a>
+                </div>
+              </div>
+              <br>
+              {% endfor %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+  </section>
+
+
+  <section class="section-main">
+    <h1>Breaking News</h1>
+
+    <div class="news-cards">
+      <div class="card-columns" id="news-list">
+        
+      </div>
+    </div>
+  </section>
+
+
+  <div class='my-footer'>
+    <div class='col bottom-logo'>
+        <img src="https://media.giphy.com/media/lcjDOcw21MzGGZImiR/giphy.gif">
+    </div>
+    <div class='col'>
+        <h2>COMPANY</h2>
+        <a href='#'>About</a>
+        <a href='#'>Jobs</a>
+    </div>
+    <div class='col'>
+        <h2>COMMUNITY</h2>
+        <a href='#'>New Stores</a>
+        <a href='#'>Developers</a>
+    </div>
+    <div class='col'>
+        <h2>USEFUL LINKS</h2>
+        <a href='#'>Help</a>
+        <a href='#'>Music</a>
+    </div>
+</div>
+{% endblock %}
