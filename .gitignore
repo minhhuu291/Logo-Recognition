@@ -4,3 +4,5 @@ __pycache__
 env
 .env
 .pyc
+app/static/models
+app/static/models/
