@@ -9,9 +9,9 @@
   <div class="upload-gallery">
     <div class="present-customer-image">
       <h4 class="title is-spaced" id="storename">{{name}}</h4>
-      <h3 class="title is-spaced is-red" id="belike">average price: {{averageprice}}</h3>
+      <h4 class="title is-spaced is-red" id="belike">average price: {{averageprice}}</h4>
       <!-- <input id="storename"> -->
-      <img id="customer-image" src="{{image_menu}}">
+      <img id="customer-image" src="https://storage.cloud.google.com/fansipan-website-290191/{{image_menu}}">
       <!-- <p class="subtitle is-6 spaced-top" id="desciption"></p> -->
     </div>
       <img id="store-menu" width="35%" heigh="80%" src="https://storage.cloud.google.com/fansipan-website-290191/{{image}}">
@@ -39,7 +39,7 @@
 
                 </div>
                 <div class="card-footer">
-                  <a class="card-footer-item" href="/checkout?id={{product.id}}">Purchase</a>
+                  <a class="card-footer-item" href="checkout?id={{product.id}}">Purchase</a>
                 </div>
               </div>
               <br>

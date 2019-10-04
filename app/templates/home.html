@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% block content %}
-
   <div class='main-content'>
     <h1>Find Your Store</h1>
     <h3>Find store's menu. Order online.</h3>
@@ -8,7 +7,9 @@
   <div class="new-body">
     <form action="{{url_for('uploader_page.upload_file')}}" method = "POST" enctype="multipart/form-data" class="is-large">  
       <input type="file" name="image" id="image", accept="image/png, image/jpeg" class="filepond is-fullwidth"/>  
-      <input type = "submit" value="Upload"/> 
+         
+              <input type = "submit" value="Upload"/>
+    
       <!-- <script
           src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
       <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
@@ -27,13 +28,14 @@
   <div class="upload-gallery">
     <div class="present-customer-image">
       <h4 class="title is-spaced" id="storename">Look for Menu</h4>
-      <h3 class="title is-spaced is-red" id="belike">BE LIKE</h3>
+      <h4 class="title is-spaced is-red" id="belike">BE LIKE</h4>
       <!-- <input id="storename"> -->
       <img id="customer-image" src="https://colorlib.com/preview/theme/travelers/images/img_1.jpg">
       <!-- <p class="subtitle is-6 spaced-top" id="desciption"></p> -->
     </div>
       <img id="store-menu" width="35%" heigh="80%" src="https://images.squarespace-cdn.com/content/v1/5bf5c4a17e3c3a7cf4ed645a/1561670393341-26BPRXMXTWFW8541ODLS/ke17ZwdGBToddI8pDm48kAcJn0w-wU5dHBD60E0UZTV7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QHyNOqBUUEtDDsRWrJLTmEavKLH_ZiDOy8D8MfZnX23QZJwCzR7IYgvsN_lJZxdc352eQAZNMyVB2nTgCZ2cR/COBrunch.png?format=1500w">
   </div>
+
 
   <section class="section is-white">
     <div class="container news-container">
@@ -57,7 +59,7 @@
 
                 </div>
                 <div class="card-footer">
-                  <a class="card-footer-item" href="/checkout?id={{product.id}}">Purchase</a>
+                  <a class="card-footer-item" href="/checkout?id=coffeehouse@{{product.id}}">Purchase</a>
                 </div>
               </div>
               <br>
@@ -67,7 +69,14 @@
           {% endfor %}
         </div>
       </div>
-  </section>
+    </section>   
+
+  <!-- <div class="container news-container">
+    <h1 class="title">What's new</h1><br>
+  </div>
+  <section class="section is-white" id="news-list">
+    
+  </section> --> 
 
 
   <!-- <section class="section-main">
@@ -86,19 +95,13 @@
         <img src="https://media.giphy.com/media/lcjDOcw21MzGGZImiR/giphy.gif">
     </div>
     <div class='col'>
-        <h2>COMPANY</h2>
-        <a href='#'>About</a>
-        <a href='#'>Jobs</a>
+        <a href='#'>About Me</a>
     </div>
     <div class='col'>
-        <h2>COMMUNITY</h2>
-        <a href='#'>New Stores</a>
-        <a href='#'>Developers</a>
+        <a href='#'>Find Stores</a>
     </div>
     <div class='col'>
-        <h2>USEFUL LINKS</h2>
-        <a href='#'>Help</a>
-        <a href='#'>Music</a>
+        <a href='#'>Help?</a>
     </div>
 </div>
 {% endblock %}

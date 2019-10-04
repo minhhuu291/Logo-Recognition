@@ -38,7 +38,7 @@ class CheckOutForm(FlaskForm):
     """
     FlaskForm for checking out items.
     """
-    product_ids = FieldList(StringField('product_id', validators=[DataRequired()]), min_entries=1)
+    product_ids = FieldList(StringField(['product_id'], validators=[DataRequired()]), min_entries=1)
     address = StringField('address', validators=[Optional()])
     city = StringField('city', validators=[DataRequired()])
     email = StringField('email', validators=[DataRequired()])

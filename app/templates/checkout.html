@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-  <section class="hero">
+  <section class="hero is-white">
     <div class="hero-body">
       <div class="container">
         <h2 class="subtitle">You are ordering</h2>
@@ -12,7 +12,7 @@
         <article class="media">
             <figure class="media-left">
             <p class="image is-128x128">
-            <img src="https://storage.cloud.google.com/{{bucket}}/{{ product.image }}" onerror="this.src='https://storage.cloud.google.com/{{bucket}}/placeholder.png'">
+            <img src="https://storage.cloud.google.com/fansipan-website-290191/{{ product.image }}" onerror="this.src='https://storage.cloud.google.com/{{bucket}}/placeholder.png'">
             </p>
             </figure>
             <div class="media-content">
@@ -34,7 +34,7 @@
   <form id="payment-form" action="/charge" method="POST">
     {{ form.csrf_token }}
     {% for i in range(products|length) %}
-    <input type="hidden" id="product_id" name="product_ids-{{i}}" value="{{ products[i].id }}">
+    <input type="hidden" id="product_id" name="product_ids-{{i}}" value="{{ stores[i] }}@{{ products[i].id }}">
     {% endfor %}
     <input type="hidden" id="address" name="address" value="">
     <input type="hidden" id="city" name="city" value="">
@@ -66,10 +66,10 @@
           </div>
           <div class="column">
             <div class="field">
-              <label class="label has-text-grey">Email</label>
+              <label class="label has-text-grey">Name</label>
               <p class="control has-icons-left">
-                <input id="email_input" class="input has-background-dark has-text-light" type="email" style="border: none;">
-                <span class="icon is-small is-left"><i class="fas fa-envelope"></i></span>
+                <input id="email_input" class="input has-background-dark has-text-light" style="border: none;">
+                <span class="icon is-small is-left"><i class="fas fa-signature"></i></span>
               </p>
             </div>
             <div class="field">

@@ -26,17 +26,20 @@ def display(auth_context):
     """
 
     products = []
+    stores = []
     # Prepares the checkout form.
     # See middlewares/form_validation.py for more information.
     form = CheckOutForm()
-    product_id = request.args.get('id')
+    product_id = request.args.get('id').split('@')
     # Checkout one single item if parameter id presents in the URL query string.
-    product = product_catalog.get_product(product_id)
+    product = product_catalog.get_product(product_id[0],product_id[1])
+    stores.append(product_id[0])
     products.append(product)
 
     if products:
         return render_template('checkout.html',
                                products=products,
+                               stores=stores,
                                auth_context=auth_context,
                                form=form,
                                bucket=product_catalog.BUCKET)

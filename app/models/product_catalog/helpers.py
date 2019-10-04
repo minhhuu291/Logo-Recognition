@@ -26,7 +26,7 @@ def add_product(product):
     firestore_client.collection('orders').document(product_id).set(asdict(product))
     return product_id
 
-def get_product(product_id):
+def get_product(store, product_id):
     """
     Helper function for getting a product.
 
@@ -37,11 +37,11 @@ def get_product(product_id):
        A Product object.
     """
 
-    product = firestore_client.collection('starbucks').document(product_id).get()
+    product = firestore_client.collection(store).document(product_id).get()
     return Product.deserialize(product)
 
 
-def list_products(name_of_product="starbucks"):
+def list_products(store="starbucks"):
     """
     Helper function for listing products.
 
@@ -52,11 +52,11 @@ def list_products(name_of_product="starbucks"):
        A list of Product objects.
     """
 
-    products = firestore_client.collection(name_of_product).get()
+    products = firestore_client.collection(store).get()
     product_list = [Product.deserialize(product) for product in list(products)]
     return product_list
 
-def calculate_total_price(product_ids):
+def calculate_total_price(stores, product_ids):
     """
     Helper function for calculating the total price of a list of products.
 
@@ -68,7 +68,7 @@ def calculate_total_price(product_ids):
     """
 
     total = 0
-    for product_id in product_ids:
-        product = get_product(product_id)
+    for i in range(len(product_ids)):
+        product = get_product(stores[i], product_ids[i])
         total += product.price
     return total

@@ -42,7 +42,7 @@ uploader_page = Blueprint('uploader_page', __name__)
 STATIC_FOLDER = "static"
 
 # Path to frozen detection graph. This is the actual model that is used for the object detection.
-PATH_TO_FROZEN_GRAPH = 'static/models/frozen_inference_graph.pb'
+PATH_TO_FROZEN_GRAPH = 'static/models/frozen_inference_graph1.pb'
 
 # List of the strings that is used to add correct label for each box.
 PATH_TO_LABELS = 'static/models/data/object-detection.pbtxt'
@@ -50,6 +50,7 @@ PATH_TO_LABELS = 'static/models/data/object-detection.pbtxt'
 # Load model
 # cnn_model = tf.keras.models.load_model(STATIC_FOLDER + "/models/" + "dog_cat_M.h5")
 # classes = ['cat', 'dog']
+
 
 classes = ['TqE3sw0EuLVO6xHPBlog','ibrfh344pxsOkbTf6pLf','Jhuge8GdZ4geGXgnm7wr','jCKM0uQFyKeF8gieQPti','Hk8OLqr0qwTsaknX4phW']
 category_index = {1: {'id': 1, 'name': 'modernhustle'},
@@ -115,6 +116,7 @@ def run_inference_for_single_image(image, graph):
             #     tensor_dict['detection_masks'] = tf.expand_dims(
             #         detection_masks_reframed, 0)
             image_tensor = tf.get_default_graph().get_tensor_by_name('image_tensor:0')
+            print('ok')
 
             # Run inference
             output_dict = sess.run(tensor_dict,
@@ -201,30 +203,37 @@ def upload_file():
     product = get_product(pred_class)
     
     menus = list_products(store_name)
-    menu = [prod.to_dict() for prod in list(menus)]
+    menu = []
+    for item in list(menus):
+        prod=item.to_dict()
+        prod['id']=store_name + "@" + item.id
+        menu.append(prod)
 
+    # menu= [prod.to_dict() for prod in list(menus)]
+
+    img_encode = cv2.imencode('.jpg', image)[1]
+    data_encode = np.array(img_encode)
+    str_encode = data_encode.tostring()
 
     # upload file to storage
-    # id = uuid.uuid4().hex
-    # filename = FILENAME_TEMPLATE.format(id)
-    # upload_blob(BUCKET, raw_img, filename)
+    id = uuid.uuid4().hex
+    filename = FILENAME_TEMPLATE.format(id)
+    upload_blob(BUCKET, str_encode, filename)
 
 #    outputs = cnn_model.predict(tf.expand_dims(img_preprocessed, 0))[0]
 #    pred_class = classes[np.argmax(outputs)]
 
    # f.save("images/" + f.filename)
-    # img_encode = cv2.imencode('.jpg', image)[1]
 
-    # data_encode = np.array(img_encode)
-    # str_encode = data_encode.tostring()
+
+
     return render_template('uploader.html',
                     name=product['name'],
                     image=product['image'],
                     description=product['description'],
                     averageprice=str(product['average_price']),
                     products=menu,
-                    image_menu=link)    
-   # return render_template('uploader.html',
-   #                         products=products,
-   #                         bucket=product_catalog.BUCKET,
-   #                         file = str(image))
+                    image_menu='uploaded/'+filename)    
+
+    # return jsonify([product['name'],product['description'],product['image'],"uploaded/"+filename,str(product['average_price']),menu])   
+

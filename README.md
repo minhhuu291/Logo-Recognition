@@ -1,86 +1,70 @@
-# Vietnam Dong Classifier
+# FINAL PROJECT: DEVELOPMENT PLAN
 
-In this project, I implement a classifier for the currency of Vietnam, the Vietnam Dong (VND). The idea is a website that user can capture an image of VND note which could be 1k, 2k, 5k, 10k, 20k, 50k, 100k, 200k, and 500k (9 classes), and then the app will recognize the value of the note.
+## I. INTRODUCTION:
 
-Demo app: https://cs-currency-classifier.appspot.com/#
+Walking pass an interesting restaurant/coffee shop, thinking about going in but not sure about what they offered and too lazy to search for it in Google?
 
-The technical problems to solve:
-* How to train a deep learning model to classify the note?
-* How to deploy the model in a web application?
-* How can a user capture photos on the web?
-* How to store the images that users submit?
+With this app, all you have to do is to taking one picture, and all these information are there for you. You could also make a purchase for the drink you like. It's time to make your evening adventure much more easier and enjoyable. 
 
-## Modeling
+### 1. User story: 
 
-The model was trained on 1675 images:
+![](https://i.imgur.com/f9NccXg.png)
 
-| Note value | #image |
-|-|-|
-| 1000 | 68|
-| 10000 | 164|
-| 100000 | 200|
-| 2000 | 176|
-| 20000 | 185|
-| 200000 | 203|
-| 5000 | 253|
-| 50000 | 219|
-| 500000 | 207|
+### 2. App Function:
+- __Taking picture__: _-to be develop-_
+- __Upload picture__ => get return informations about the shop: average price, menu.
+- __Placed order__ => order from the menu and get the drink from your hotel/apartment.
+___
+![](https://i.imgur.com/HwoqNi6.png)
 
-Pre-trained model: `tf.keras.applications.MobileNetV2`
+![](https://i.imgur.com/Lr8icZj.png)
 
-Fine-tuning at layer 140
+<!-- ![](https://i.imgur.com/5LDFzNE.png) -->
+<!-- ![](https://i.imgur.com/4MQu4Z2.png) -->
 
-Model summary:
-```
-Model: "sequential_18"
-_________________________________________________________________
-Layer (type)                 Output Shape              Param #   
-=================================================================
-mobilenetv2_1.00_192 (Model) (None, 6, 6, 1280)        2257984   
-_________________________________________________________________
-global_average_pooling2d_18  (None, 1280)              0         
-_________________________________________________________________
-dense_18 (Dense)             (None, 9)                 11529     
-=================================================================
-Total params: 2,269,513
-Trainable params: 1,051,529
-Non-trainable params: 1,217,984
-```
+#### Upload picture of the store (include logo).
 
-Validation accuracy: 88.54%
+![](https://i.imgur.com/PY9Ztgk.png)
 
-## Deployment
+#### Order the drink you like on the menu.
 
-This demo app was deployed on Google Cloud Platform, using
-[Google App Engine](https://cloud.google.com/appengine/),
-[Google Cloud Functions](https://cloud.google.com/functions/),
-[Google Cloud Storage](https://cloud.google.com/storage/)
+![](https://i.imgur.com/xTLatQj.png)
+___
 
-**Before you begin:** Create a Google Cloud Platform project with billing enabled and install Google Cloud SDK.
-Set up project:
+### 3. About the dataset:
 
-```
-gcloud auth login
-gcloud config set project PROJECT_ID
-```
+- The dataset has 5 different stores: Starbuck, Phuc Long, The Alley, The Koi and ModernHustle. Photos are cutting from videos - less than 10 second each, of the store including their logo. Photos then being labeled by LabelImg and feeded to Tensorflow pretrain-model Faster-rcnn-resnet-50-coco.  
+____
 
-**Deploy to App Engine:**
-Open a terminal and switch to the `app/` directory. Edit `app/app.yaml` and replace `YOUR-PROJECT`,
-`YOUR-BUCKET`, with values of your own. `app.yaml`
-is the App Engine configuration file. Then run the command below
+## II. PROJECT DEPLOYMENT
 
-```
-gcloud app deploy
-```
+![](https://i.imgur.com/vDsWbUA.jpg)
 
-**Deploy Cloud Function:**
-Open a terminal and switch to directory `functions/classifier`:
+![](https://scontent.fsgn2-2.fna.fbcdn.net/v/t1.0-9/69838875_2344903755826306_6637809253740445696_o.jpg?_nc_cat=103&_nc_oc=AQlGOBUaBhxca-hJEfJms_XCTTo-8KtgQzLSW--TRAWadQ4fZ55RC-Iv5q5C33mwxKw&_nc_ht=scontent.fsgn2-2.fna&oh=5d158a6466cf59f374527a2f4bbd5bd8&oe=5DC884F6)
 
-```
-gcloud functions deploy classifier2 \
-    --runtime python37 \
-    --trigger-http \
-    --set-env-vars GCS_BUCKET=fansipan-website-290191 \
-    --region us-central1 \
-    --memory 2048
-```
+### 1. Set Up Environment:
+- [FLASK](https://flask.palletsprojects.com)
+- [VSCODE](https://code.visualstudio.com/docs/setup/setup-overview)
+### 2. Image preprocessing:
+- Label by LabelImg.
+- Preprocessing using **PIL**, **os** and libraries.
+### 3. Model training:
+- Training model using **tensorflow 1.14** and **Faster-rcnn-resnet-50-coco**
+### 3. Deployment:
+- Set up google cloud account.
+- Enable billing (which give you a free tier of 300 USD)
+- Deploy app.
+
+## RESULTS
+- Our app is available [here](fansipan-website-290191.appspot.com)
+
+## FURTHER WORK:
+- Add the camera into the homepage so people could taking picture directly in app instead of using default camera app.
+- Add more stores - at least 10 stores.
+- Collect more data and implement some data-preprocessing method so that the model could perform better.
+
+____ 
+
+_Reference:_
+https://arxiv.org/pdf/1512.02325.pdf
+https://towardsdatascience.com/logo-detection-in-images-using-ssd-bcd3732e1776

@@ -92,8 +92,8 @@ nav {
   align-items: center;
   justify-content: space-around;
   background-color: white;
-  padding-top: 2vh;
-  padding-bottom: 2vh;
+  padding-top: 5vh;
+  padding-bottom: 5vh;
 }
 
 .search {
@@ -197,13 +197,13 @@ nav {
 
 .my-footer{
   display: flex;
-  height: 30vh;
-  background-color: rgba(100,100,100,0.8);
+  height: 60vh;
+  background-color: rgba(255, 255, 255, 1);
   align-items: center;
 }
 
 .my-footer img {
-  height: 100%;
+  height: 60%;
 }
 
 .col{
@@ -267,9 +267,6 @@ nav {
   background-color: #f8f9fa;
 }
 
-.is-large {
-  width: 50%;
-}
 
 .spaced-top {
   padding-top: 1vh;
@@ -285,5 +282,20 @@ nav {
 
 .is-red {
   color: red;
+}
+
+.is-center {
+  display: flex;
+  justify-content: center;
+}
+
+.present-customer-image h4 {
+  font-size: 1.3rem;
+}
+
+.my-footer a {
+  font-size: 4vh;
+  font-weight: 800;
+  color: black;
 }
 

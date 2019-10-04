@@ -31,12 +31,15 @@ def process(auth_context, form):
     """
 
     # Prepare the order
-    product_ids = form.product_ids.data
+    print(form.product_ids.data)
+    product_ids = [data.split('@')[1] for data in form.product_ids.data]
+    stores = [data.split('@')[0] for data in form.product_ids.data]
+    print(product_ids)
     shipping = orders.Shipping(address=form.address.data,
                                 city=form.city.data,
                                 email=form.email.data,
                                 mobile=form.mobile.data)
-    amount = product_catalog.calculate_total_price(product_ids)
+    amount = product_catalog.calculate_total_price(stores,product_ids)
     order = orders.Order(amount=amount,
                         shipping=shipping,
                         status="order_created",
