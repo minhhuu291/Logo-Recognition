@@ -299,3 +299,7 @@ nav {
   color: black;
 }
 
+.is-dark {
+  background-color: rgba(29, 12, 12, 0.2);
+}
+

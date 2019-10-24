@@ -184,18 +184,23 @@ def upload_file():
     # products = product_catalog.get_product('jCKM0uQFyKeF8gieQPti')
     f = request.files.get('image')
     raw_img = f.read()
-    img_preprocessed, (height, weight) = preprocess_image(raw_img)
+    img_preprocessed, (rows,cols) = preprocess_image(raw_img)
     # Actual detection.
     output_dict = run_inference_for_single_image(img_preprocessed, detection_graph)
     output = output_dict['detection_classes'][0]
     store_name = category_index[output]['name']
 
-    x,y,w,h = output_dict['detection_boxes'][0]
-    x,w = int(x*height), int(w*height)
-    y,h = int(y*weight), int(h*weight)
-    image = cv2.rectangle(img_preprocessed[0], (y,x), (h,w), (0,255,0), 5)
+    x = output_dict['detection_boxes'][0][1] * cols
+    y = output_dict['detection_boxes'][0][0] * rows
+    right = output_dict['detection_boxes'][0][3] * cols
+    bottom = output_dict['detection_boxes'][0][2] * rows
+    # x,y,w,h = output_dict['detection_boxes'][0]
+    # x,w = int(x*height), int(w*height)
+    # y,h = int(y*weight), int(h*weight)
+    # print(height, weight)
+    image = cv2.rectangle(img_preprocessed[0], (int(x),int(y)), (int(right),int(bottom)), (0,255,0), 5)
     print('hey', category_index[output_dict['detection_classes'][0]]['name'])
-    image = cv2.putText(image, category_index[output_dict['detection_classes'][0]]['name'], (y, x-8), cv2.FONT_HERSHEY_TRIPLEX, 1.0, (0, 255, 0))
+    image = cv2.putText(image, category_index[output_dict['detection_classes'][0]]['name'], (int(y), int(x-8)), cv2.FONT_HERSHEY_TRIPLEX, 1.0, (0, 255, 0))
     cv2.imwrite('static/images/image.jpg', image)
     link='static/images/image.jpg'
 
