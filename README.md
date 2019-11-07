@@ -33,7 +33,7 @@ ___
 
 ### 3. About the dataset:
 
-- The dataset has 5 different stores: Starbuck, Phuc Long, The Alley, The Koi and ModernHustle. Photos are cutting from videos - less than 10 second each, of the store including their logo. Photos then being labeled by LabelImg and feeded to Tensorflow pretrain-model Faster-rcnn-resnet-50-coco.  
+- The dataset has 5 different stores: Starbuck, Phuc Long, The Alley, Highland and Tocotoco. Photos are download from google. Photos then being labeled by LabelImg and feeded to Tensorflow pretrain-model Faster-rcnn-resnet-50-coco.  
 ____
 
 ## II. PROJECT DEPLOYMENT
@@ -56,7 +56,7 @@ ____
 - Deploy app.
 
 ## RESULTS
-- Our app is available [here](fansipan-website-290191.appspot.com)
+- Our app is available [here](http://fansipan-website-290191.appspot.com)
 
 ## FURTHER WORK:
 - Add the camera into the homepage so people could taking picture directly in app instead of using default camera app.
